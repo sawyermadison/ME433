@@ -15,6 +15,8 @@ void set_angle(float angle) {
 }
 
 int main() {
+    // test
+    printf("Hello, World!\n");
     stdio_init_all();
 
     gpio_set_function(SERVO_PIN, GPIO_FUNC_PWM);
