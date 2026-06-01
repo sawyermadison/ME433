@@ -76,11 +76,19 @@ int main()
         uint64_t time[num];
         
 
-        for (int i = 0; i<num; i++){
+        for (int i = 0; i < num; i++) {
+
             raw_data[i] = 0;
             read_bits(&raw_data[i]);
 
-            filtered_data[i] = 0.1 * raw_data[i] + 0.9 * avg;
+            if(i == 0){
+                filtered_data[i] = avg;
+            }
+            else{
+                filtered_data[i] =
+                    0.9 * filtered_data[i-1] + 0.1 * raw_data[i];
+            }
+
             time[i] = to_us_since_boot(get_absolute_time()) - t0;
         }
 
